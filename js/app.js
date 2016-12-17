@@ -109,8 +109,8 @@ function fgoImagesController($sce, $http) {
     }
 
     function getProxyPage(page, callback) {
-        //var proxyBase = "http://cors-proxy.htmldriven.com/?url=";
-        var proxyBase = "http://cors-anywhere.herokuapp.com/";
+        //var proxyBase = "https://cors-proxy.htmldriven.com/?url=";
+        var proxyBase = "https://cors-anywhere.herokuapp.com/";
         $http.get(proxyBase + page).then(function (response) {
             var rawHtml = response.data;
             var element = $('<div></div>');
