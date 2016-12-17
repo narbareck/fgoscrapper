@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>FGO Image extractor</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.2/lodash.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/async/2.1.4/async.min.js"></script>
+
+        <script src="js/app.js"></script>
+    </head>
+    <body ng-app="fgoImages">
+        <div ng-controller="fgoImagesController as vm" class="container table-responsive">
+            <h1>Servants {{vm.servants.length|| 0}}/{{ vm.numberOfServants}}
+                <button class="btn btn-primary"
+                        ng-click="vm.showServants = !vm.showServants">Toggle</button>
+
+                <button class="btn btn-danger"
+                        ng-click="vm.reloadServants()">Reload</button>
+            </h1>
+            <table class="table" ng-show="vm.showServants">
+                <thead>
+                    <tr>
+                        <th>
+                           Name 
+                        </th>
+                        <th colspan="5">
+                            <input type="text" class="form-control" ng-model="vm.servantFilter.name"/>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat-start="servant in vm.filterServants()">
+                        <td>
+                            <div>
+                                <label>{{ servant.name}} </label>
+                            </div>
+                            <div>{{ servant.class}} </div>
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>STR</th>
+                                    <td>{{ servant.stats.str}}</td>
+                                    <th>END</th>
+                                    <td>{{ servant.stats.end}}</td>
+                                </tr>
+                                <tr>
+                                    <th>AGI</th>
+                                    <td>{{ servant.stats.agi}}</td>
+                                    <th>MGI</th>
+                                    <td>{{ servant.stats.mgi}}</td>
+                                </tr>
+                                <tr>
+                                    <th>LCK</th>
+                                    <td>{{ servant.stats.lck}}</td>
+                                    <th>NP</th>
+                                    <td>{{ servant.stats.np}}</td>
+                                </tr>
+                            </table>
+                            <div>
+                                <button class="btn btn-danger"
+                                        ng-click="servant.details = !servant.details" >Details</button>
+                            </div>
+                        </td>
+                        <td>
+                            <div ng-click="vm.zoomIn($event)" class="clickable">
+                                <img class="img-responsive" ng-src="{{ servant.images.firstForm}}"/>
+                            </div>
+                        </td>
+                        <td>
+                            <div ng-click="vm.zoomIn($event)" class="clickable">
+                                <img class="img-responsive" ng-src="{{ servant.images.secondForm}}"/>
+                            </div>
+                        </td>
+                        <td>
+                            <div ng-click="vm.zoomIn($event)" class="clickable">
+                                <img class="img-responsive" ng-src="{{ servant.images.thirdForm}}"/>
+                            </div>
+                        </td>
+                        <td>
+                            <div ng-click="vm.zoomIn($event)" class="clickable">
+                                <img class="img-responsive" ng-src="{{ servant.images.fourthForm}}"/>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr ng-if="servant.details" ng-repeat-end="">
+                        <td colspan="5">
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            {{ servant.description}}
+                                        </td>
+                                    </tr>
+                                    <tr ng-repeat="background in servant.background">
+                                        <td>
+                                            <strong ng-if="background.title">
+                                                {{ background.title}}
+                                            </strong>
+                                            <div>
+                                                <small ng-if="background.subtitle"> {{ background.subtitle}} </small>
+                                            </div>
+                                            <div ng-if="background.info">
+                                                <div ng-repeat="line in background.info"><small>{{line}}</small></div>
+                                            </div>
+                                            <p ng-repeat="paragraph in background.description">
+                                                {{ paragraph}}
+                                            </p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h1>Craft Essences {{vm.craftEssences.length|| 0}}/{{ vm.numberOfCEs}}
+                <button class="btn btn-primary" ng-click="vm.showCEs = !vm.showCEs">Toggle</button>
+                <button class="btn btn-danger"
+                        ng-click="vm.reloadEssences()">Reload</button>
+            </h1>
+            <div class="row" ng-show="vm.showCEs">
+                <div class="col-xs-3" ng-repeat="essence in vm.craftEssences track by $index">
+                    <div class="clickable" ng-click="vm.zoomIn($event)">
+                        <img class="img-responsive" ng-src="{{ essence.image}}"/>
+                    </div>
+                    <span>{{essence.name}}</span>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
