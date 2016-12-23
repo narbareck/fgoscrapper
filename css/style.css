@@ -30,3 +30,13 @@ and open the template in the editor.
 .clickable {
     cursor: pointer;
 }
+
+.essence-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.essence-name:hover {
+    overflow: visible;
+    background-color: inherit;
+}

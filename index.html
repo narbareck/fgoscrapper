@@ -33,7 +33,7 @@ and open the template in the editor.
                 <thead>
                     <tr>
                         <th>
-                           Name 
+                            Name 
                         </th>
                         <th colspan="5">
                             <input type="text" class="form-control" ng-model="vm.servantFilter.name"/>
@@ -130,11 +130,17 @@ and open the template in the editor.
                         ng-click="vm.reloadEssences()">Reload</button>
             </h1>
             <div class="row" ng-show="vm.showCEs">
-                <div class="col-xs-3" ng-repeat="essence in vm.craftEssences track by $index">
-                    <div class="clickable" ng-click="vm.zoomIn($event)">
-                        <img class="img-responsive" ng-src="{{ essence.image}}"/>
+                <div class="col-xs-12">
+                    <input type="text" class="form-control" ng-model="vm.essenceFilter.name"/>
+                </div>
+                <hr/>
+                <div class="col-xs-3" ng-repeat="essence in vm.filterEssences()" ng-if='essence.image'>
+                    <div class="well">
+                        <div class="clickable" ng-click="vm.zoomIn($event)">
+                            <img class="img-responsive" ng-src="{{ essence.image}}"/>
+                        </div>
+                        <p class="text-center essence-name">{{essence.name}}</p>
                     </div>
-                    <span>{{essence.name}}</span>
                 </div>
             </div>
         </div>

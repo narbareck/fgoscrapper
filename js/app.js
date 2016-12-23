@@ -16,6 +16,7 @@ function fgoImagesController($sce, $http) {
     vm.numberOfServants = 0;
     vm.numberOfCEs = 0;
     vm.servantFilter = {};
+    vm.essenceFilter = {};
 
     vm.getServantImage = getServantImage;
     vm.getCEImage = getCEImage;
@@ -23,6 +24,7 @@ function fgoImagesController($sce, $http) {
     vm.reloadEssences = loadCraftEssenceData;
     vm.zoomIn = zoomIn;
     vm.filterServants = filterServants;
+    vm.filterEssences = filterEssences;
 
     init();
 
@@ -178,6 +180,12 @@ function fgoImagesController($sce, $http) {
     function filterServants() {
         return _.filter(vm.servants, function(servant) {
             return !vm.servantFilter.name || _.includes(_.lowerCase(servant.name), _.lowerCase(vm.servantFilter.name));
+        });
+    }
+    
+    function filterEssences() {
+        return _.filter(vm.craftEssences, function(essence) {
+            return !vm.essenceFilter.name || _.includes(_.lowerCase(essence.name), _.lowerCase(vm.essenceFilter.name));
         });
     }
 }
