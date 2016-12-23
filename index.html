@@ -134,7 +134,7 @@ and open the template in the editor.
                     <input type="text" class="form-control" ng-model="vm.essenceFilter.name"/>
                 </div>
                 <hr/>
-                <div class="col-xs-3" ng-repeat="essence in vm.filterEssences()" ng-if='essence.image'>
+                <div class="col-xs-3" ng-repeat="essence in vm.filterEssences()">
                     <div class="well">
                         <div class="clickable" ng-click="vm.zoomIn($event)">
                             <img class="img-responsive" ng-src="{{ essence.image}}"/>
