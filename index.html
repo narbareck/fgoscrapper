@@ -35,7 +35,7 @@ and open the template in the editor.
                         <th>
                             Name 
                         </th>
-                        <th colspan="5">
+                        <th colspan="2">
                             <input type="text" class="form-control" ng-model="vm.servantFilter.name"/>
                         </th>
                     </tr>
@@ -73,28 +73,23 @@ and open the template in the editor.
                             </div>
                         </td>
                         <td>
-                            <div ng-click="vm.zoomIn($event)" class="clickable">
-                                <img class="img-responsive" ng-src="{{ servant.images.firstForm}}"/>
+                            <div class="row">
+                                <div ng-click="vm.zoomIn($event)" class="clickable col-xs-6 col-md-3">
+                                    <img class="img-responsive" ng-src="{{ servant.images.firstForm}}"/>
+                                </div>
+                                <div ng-click="vm.zoomIn($event)" class="clickable col-xs-6 col-md-3">
+                                    <img class="img-responsive" ng-src="{{ servant.images.secondForm}}"/>
+                                </div>
+                                <div ng-click="vm.zoomIn($event)" class="clickable col-xs-6 col-md-3">
+                                    <img class="img-responsive" ng-src="{{ servant.images.thirdForm}}"/>
+                                </div>
+                                <div ng-click="vm.zoomIn($event)" class="clickable col-xs-6 col-md-3">
+                                    <img class="img-responsive" ng-src="{{ servant.images.fourthForm}}"/>
+                                </div>
                             </div>
-                        </td>
-                        <td>
-                            <div ng-click="vm.zoomIn($event)" class="clickable">
-                                <img class="img-responsive" ng-src="{{ servant.images.secondForm}}"/>
-                            </div>
-                        </td>
-                        <td>
-                            <div ng-click="vm.zoomIn($event)" class="clickable">
-                                <img class="img-responsive" ng-src="{{ servant.images.thirdForm}}"/>
-                            </div>
-                        </td>
-                        <td>
-                            <div ng-click="vm.zoomIn($event)" class="clickable">
-                                <img class="img-responsive" ng-src="{{ servant.images.fourthForm}}"/>
-                            </div>
-                        </td>
                     </tr>
                     <tr ng-if="servant.details" ng-repeat-end="">
-                        <td colspan="5">
+                        <td colspan="2">
                             <table class="table table-bordered">
                                 <tbody>
                                     <tr>
@@ -134,7 +129,7 @@ and open the template in the editor.
                     <input type="text" class="form-control" ng-model="vm.essenceFilter.name"/>
                 </div>
                 <hr/>
-                <div class="col-xs-3" ng-repeat="essence in vm.filterEssences()">
+                <div class="col-md-3 col-xs-6   " ng-repeat="essence in vm.filterEssences()">
                     <div class="well">
                         <div class="clickable" ng-click="vm.zoomIn($event)">
                             <img class="img-responsive" ng-src="{{ essence.image}}"/>
