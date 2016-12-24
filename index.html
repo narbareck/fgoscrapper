@@ -36,7 +36,7 @@ and open the template in the editor.
                             Name 
                         </th>
                         <th colspan="2">
-                            <input type="text" class="form-control" ng-model="vm.servantFilter.name"/>
+                            <input type="text" placeholder="Search..." class="form-control" ng-model="vm.servantFilter.name"/>
                         </th>
                     </tr>
                 </thead>
@@ -126,7 +126,7 @@ and open the template in the editor.
             </h1>
             <div class="row" ng-show="vm.showCEs">
                 <div class="col-xs-12">
-                    <input type="text" class="form-control" ng-model="vm.essenceFilter.name"/>
+                    <input type="text" placeholder="Search..." class="form-control" ng-model="vm.essenceFilter.name"/>
                 </div>
                 <hr/>
                 <div class="col-md-3 col-xs-6   " ng-repeat="essence in vm.filterEssences()">
