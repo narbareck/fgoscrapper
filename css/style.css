@@ -7,38 +7,67 @@ and open the template in the editor.
     Created on : 07-dic-2016, 0:54:41
     Author     : julio_000
 */
-
 .fixed {
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    position: fixed;
-    margin: auto;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 1;
-}
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  margin: auto;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1; }
+
 .fixed img {
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    position: absolute;
-    margin: auto;
-}
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: auto; }
 
 .clickable {
-    cursor: pointer;
-}
+  cursor: pointer; }
 
 .essence-name {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-.essence-name:hover {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+  .essence-name:hover {
     overflow: visible;
-    background-color: inherit;
-}
+    background-color: inherit; }
+
+.servant-class {
+  display: inline-block;
+  background-size: cover;
+  background-position: center;
+  width: 50px;
+  height: 50px;
+  transition: all linear 0.2s; }
+  .servant-class:not(.enabled) {
+    opacity: 0.5; }
+  .servant-class.saber {
+    background-image: url("../img/saber.png"); }
+  .servant-class.archer {
+    background-image: url("../img/archer.png"); }
+  .servant-class.lancer {
+    background-image: url("../img/lancer.png"); }
+  .servant-class.rider {
+    background-image: url("../img/rider.png"); }
+  .servant-class.caster {
+    background-image: url("../img/caster.png"); }
+  .servant-class.assassin {
+    background-image: url("../img/assassin.png"); }
+  .servant-class.berserker {
+    background-image: url("../img/berserker.png"); }
+  .servant-class.ruler {
+    background-image: url("../img/ruler.png"); }
+  .servant-class.avenger {
+    background-image: url("../img/avenger.png"); }
+  .servant-class.shielder {
+    background-image: url("../img/shielder.png"); }
+  .servant-class.beast {
+    background-image: url("../img/beast-1.png"); }
+
+/*# sourceMappingURL=style.css.map */

@@ -39,6 +39,18 @@ and open the template in the editor.
                             <input type="text" placeholder="Search..." class="form-control" ng-model="vm.servantFilter.name"/>
                         </th>
                     </tr>
+                    <tr>
+                        <th>
+                            Classes
+                        </th>
+                        <th colspan="2">
+                            <div ng-repeat="(servantClass, visible) in vm.servantFilter.classes" 
+                                 ng-click="vm.servantFilter.classes[servantClass] = !visible"
+                                 class="servant-class clickable"
+                                 title="{{servantClass}}"
+                                 ng-class="[servantClass, {'enabled' : visible}]"></div>
+                        </th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr ng-repeat-start="servant in vm.filterServants()">
@@ -138,6 +150,5 @@ and open the template in the editor.
                     </div>
                 </div>
             </div>
-        </div>
     </body>
 </html>

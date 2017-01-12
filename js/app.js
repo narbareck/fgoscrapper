@@ -15,7 +15,21 @@ function fgoImagesController($sce, $http) {
 
     vm.numberOfServants = 0;
     vm.numberOfCEs = 0;
-    vm.servantFilter = {};
+    vm.servantFilter = {
+        classes: {
+            saber: true,
+            archer: true,
+            lancer: true,
+            rider: true,
+            caster: true,
+            assassin: true,
+            berserker: true,
+            ruler: true,
+            avenger: true,
+            shielder: true,
+            beast: true
+        }
+    };
     vm.essenceFilter = {};
 
     vm.getServantImage = getServantImage;
@@ -176,15 +190,32 @@ function fgoImagesController($sce, $http) {
     function zoomIn(event) {
         $(event.currentTarget).toggleClass('fixed');
     }
-    
+
     function filterServants() {
         return _.filter(vm.servants, function(servant) {
-            return !vm.servantFilter.name || _.includes(_.lowerCase(servant.name), _.lowerCase(vm.servantFilter.name));
+            return filterServantName(servant) && filterServantClass(servant);
         });
     }
     
+    function filterServantName(servant) {
+        return !vm.servantFilter.name || _.includes(_.lowerCase(servant.name), _.lowerCase(vm.servantFilter.name))
+    }
+    function filterServantClass(servant) {
+        return (vm.servantFilter.classes.saber && _.includes(_.lowerCase(servant.class), "saber")) ||
+                (vm.servantFilter.classes.archer && _.includes(_.lowerCase(servant.class), "archer")) ||
+                (vm.servantFilter.classes.lancer && _.includes(_.lowerCase(servant.class), "lancer")) ||
+                (vm.servantFilter.classes.rider && _.includes(_.lowerCase(servant.class), "rider")) ||
+                (vm.servantFilter.classes.caster && _.includes(_.lowerCase(servant.class), "caster")) ||
+                (vm.servantFilter.classes.assassin && _.includes(_.lowerCase(servant.class), "assassin")) ||
+                (vm.servantFilter.classes.berserker && _.includes(_.lowerCase(servant.class), "berserker")) ||
+                (vm.servantFilter.classes.ruler && _.includes(_.lowerCase(servant.class), "ruler")) ||
+                (vm.servantFilter.classes.shielder && _.includes(_.lowerCase(servant.class), "shielder")) ||
+                (vm.servantFilter.classes.avenger && _.includes(_.lowerCase(servant.class), "avenger")) ||
+                (vm.servantFilter.classes.beast && _.includes(_.lowerCase(servant.class), "beast"))        
+    }
+
     function filterEssences() {
-        return _.filter(vm.craftEssences, function(essence) {
+        return _.filter(vm.craftEssences, function (essence) {
             return !vm.essenceFilter.name || _.includes(_.lowerCase(essence.name), _.lowerCase(vm.essenceFilter.name));
         });
     }

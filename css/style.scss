@@ -1,0 +1,89 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 07-dic-2016, 0:54:41
+    Author     : julio_000
+*/
+
+.fixed {
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1;
+}
+.fixed img {
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    margin: auto;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+.essence-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    &:hover {
+        overflow: visible;
+        background-color: inherit;
+    }
+}
+
+.servant-class {
+    display: inline-block;
+    background-size: cover;
+    background-position: center;
+    width: 50px;
+    height: 50px;
+    transition: all linear 0.2s;
+    &:not(.enabled) {
+        opacity: 0.5;
+    }
+    &.saber {
+        background-image: url("../img/saber.png");
+    }
+    &.archer {
+        background-image: url("../img/archer.png");
+    }
+    &.lancer {
+        background-image: url("../img/lancer.png");
+    }
+    &.rider {
+        background-image: url("../img/rider.png");
+    }
+    &.caster {
+        background-image: url("../img/caster.png");
+    }
+    &.assassin {
+        background-image: url("../img/assassin.png");
+    }
+    &.berserker {
+        background-image: url("../img/berserker.png");
+    }
+    &.ruler {
+        background-image: url("../img/ruler.png");
+    }
+    &.avenger {
+        background-image: url("../img/avenger.png");
+    }
+    &.shielder {
+        background-image: url("../img/shielder.png");
+    }
+    &.beast {
+        background-image: url("../img/beast-1.png");
+    }
+}
